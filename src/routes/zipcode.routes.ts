@@ -1,12 +1,10 @@
 import { Router } from 'express';
 
 import ZipCodeRepository from '../repositories/ZipCodeRepository';
-
-import Zipcode from '../models/ZipCode';
+import CreateZipCodeServices from '../services/CreateZipCodeServices';
 
 const zipcodeRouter = Router();
 const zipCodeRepository = new ZipCodeRepository();
-
 
 zipcodeRouter.post('/', async (request, response) => {
   const {
@@ -15,15 +13,16 @@ zipcodeRouter.post('/', async (request, response) => {
     end_track,
    } = request.body;
 
-   const veryZipCode = zipCodeRepository.findZipCodeTrack(start_track, end_track);
+   try {
+      const createZipCodeServices = new CreateZipCodeServices(zipCodeRepository);
 
-   if(veryZipCode) {
-    return response.status(400).json({error: 'The starting or ending range of the zip already exists'});
+      const zipcode_track = createZipCodeServices.execute({ store_code, start_track, end_track })
+
+      return response.status(200).json(zipcode_track);
+   } catch (error) {
+    return response.status(400).json({error: error.message});
    }
 
-   const zipcode_track = zipCodeRepository.create({ store_code, start_track, end_track });
-
-  return response.status(200).json(zipcode_track);
 });
 
 export default zipcodeRouter;
