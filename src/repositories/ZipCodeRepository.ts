@@ -17,16 +17,18 @@ class ZipCodeRepository {
     return this.zipCode;
   }
 
-  public findZipCodeTrack(start_track: number, end_track: number): ZipCode {
-    return this.zipCode.find((zipcodes) => {
+  public findZipCodeTrack(start_track: number, end_track: number): ZipCode | undefined {
+    const r = this.zipCode.find((zipcodes) => {
 
       if(start_track == zipcodes.start_track || end_track == zipcodes.end_track) {
         return zipcodes;
       }
     });
+
+    return r;
   }
 
-  public findZipCode(zipCode: number): ZipCode {
+  public findZipCode(zipCode: number): ZipCode | undefined {
     return this.zipCode.find((zipcodes) => {
 
       if(zipCode >= zipcodes.start_track || zipCode <= zipcodes.end_track) {
