@@ -1,16 +1,21 @@
-# Projetc Teste Vizir
+# TESTE GLOBALSYS
 
-## Requisitos
+## Linguagens e frameworks usados
 
-* Nodejs
+* [x] BackEnd - Nodejs com typescript
 
-#Passos para inicializar a api, acesse a pasta  do
-projeto e execute o comando:
-instalar as dependencias
-```shell
-    yarn
+## PROPOSTA DESSE PROJETO
+
+- Criar API REST para cadastrar as faixas de CEP de cada loja;
+- Criar API REST para retornar qual é a loja física que atende determinado CEP;
+
+# BackEnd
+Para iniciar os testes entre na pasta do  projeto, e execute em um terminal dos ou shell e insira o comando:
+
 ```
-Em seguida para executar o projeto execute o comando:
-```shell
-    yarn sandbox
+ yarn ou npm install
+ yarn sandbox ou npm run sandbox
 ```
+
+## AndPoints
+terá um arquivo json com nome endpoints, que é o workspace do insominia em formato json
