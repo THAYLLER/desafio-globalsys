@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import calculateValueConnection from './calculateValueConnection.routes';
+import zipcodeRouter from './zipcode.routes';
 
 const routes = Router();
 
-routes.use('/calculate', calculateValueConnection);
+routes.use('/zipcode', zipcodeRouter);
 
 export default routes;
